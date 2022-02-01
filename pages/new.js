@@ -14,7 +14,7 @@ const NewNote = () => {
                 setIsSubmitting(false);
             }
         }
-    })
+    }, [isSubmitting]);
 
     const createNote = async () => {
         try {

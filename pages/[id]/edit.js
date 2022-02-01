@@ -1,21 +1,13 @@
 import { useState, useEffect } from 'react';
-<<<<<<< HEAD
-import { Button, Form, Loader } from 'semantic-ui-react';
-=======
 import fetch from 'isomorphic-unfetch';
 import { Button, Form, Loader } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
->>>>>>> 39337a2bfac462cbb140ee3a84bb624b6f8aec32
 
 const EditNote = ({ note }) => {
     const [form, setForm] = useState({ title: note.title, description: note.description });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errors, setErrors] = useState({});
-<<<<<<< HEAD
-
-=======
     const router = useRouter();
->>>>>>> 39337a2bfac462cbb140ee3a84bb624b6f8aec32
 
     useEffect(() => {
         if (isSubmitting) {
@@ -30,10 +22,6 @@ const EditNote = ({ note }) => {
 
     const updateNote = async () => {
         try {
-<<<<<<< HEAD
-            
-            
-=======
             const res = await fetch(`http://localhost:3000/api/notes/${router.query.id}`, {
                 method: 'PUT',
                 headers: {
@@ -43,7 +31,6 @@ const EditNote = ({ note }) => {
                 body: JSON.stringify(form)
             })
             router.push("/");
->>>>>>> 39337a2bfac462cbb140ee3a84bb624b6f8aec32
         } catch (error) {
             console.log(error);
         }
@@ -110,8 +97,6 @@ const EditNote = ({ note }) => {
     )
 }
 
-<<<<<<< HEAD
-=======
 EditNote.getInitialProps = async ({ query: { id } }) => {
     const res = await fetch(`http://localhost:3000/api/notes/${id}`);
     const { data } = await res.json();
@@ -119,5 +104,4 @@ EditNote.getInitialProps = async ({ query: { id } }) => {
     return { note: data }
 }
 
->>>>>>> 39337a2bfac462cbb140ee3a84bb624b6f8aec32
 export default EditNote;
